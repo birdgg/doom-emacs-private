@@ -77,12 +77,6 @@
         +export          ; Exporting org to whatever you want
         +present         ; Emacs for presentations
         +publish)        ; Emacs+Org as a static site generator
-       (org-private
-        +todo
-        +babel
-        +capture
-        +latex
-        +export +style)
        ;plantuml          ; diagrams for confusing people more
        purescript        ; javascript, but functional
        ;rest              ; Emacs as a REST client
