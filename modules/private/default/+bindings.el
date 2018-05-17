@@ -77,82 +77,30 @@
         :desc "M-x"                     :nv ":"  #'execute-extended-command
         :desc "Org Capture"             :nv "x"  #'org-capture
 
-        ;; Most commonly used
-        :desc "Find file in project"    :n "SPC" #'projectile-find-file
-        :desc "Switch workspace buffer" :n ","   #'persp-switch-to-buffer
-        :desc "Switch buffer"           :n "<"   #'switch-to-buffer
-        :desc "Browse files"            :n "."   #'find-file
-        :desc "Toggle last popup"       :n "~"   #'+popup/toggle
-        :desc "Eval expression"         :n "`"   #'eval-expression
-        :desc "Blink cursor line"       :n "DEL" #'+nav-flash/blink-cursor
-        :desc "Jump to bookmark"        :n "RET" #'bookmark-jump
-
         ;; C-u is used by evil
         :desc "Universal argument"      :n "u"  #'universal-argument
         :desc "window"                  :n "w"  evil-window-map
 
-        (:desc "previous..." :prefix "["
-          :desc "Text size"             :nv "[" #'text-scale-decrease
-          :desc "Buffer"                :nv "b" #'previous-buffer
-          :desc "Diff Hunk"             :nv "d" #'git-gutter:previous-hunk
-          :desc "Todo"                  :nv "t" #'hl-todo-previous
-          :desc "Error"                 :nv "e" #'previous-error
-          :desc "Workspace"             :nv "w" #'+workspace/switch-left
-          :desc "Smart jump"            :nv "h" #'smart-backward
-          :desc "Spelling error"        :nv "s" #'evil-prev-flyspell-error
-          :desc "Spelling correction"   :n  "S" #'flyspell-correct-previous-word-generic)
-
-        (:desc "next..." :prefix "]"
-          :desc "Text size"             :nv "]" #'text-scale-increase
-          :desc "Buffer"                :nv "b" #'next-buffer
-          :desc "Diff Hunk"             :nv "d" #'git-gutter:next-hunk
-          :desc "Todo"                  :nv "t" #'hl-todo-next
-          :desc "Error"                 :nv "e" #'next-error
-          :desc "Workspace"             :nv "w" #'+workspace/switch-right
-          :desc "Spelling error"        :nv "s" #'evil-next-flyspell-error
-          :desc "Spelling correction"   :n  "S" #'flyspell-correct-word-generic)
-
-        (:desc "search" :prefix "/"
-          :desc "Project"                :nv "p" #'+ivy/project-search
-          :desc "Directory"              :nv "d" (λ! (+ivy/project-search t))
-          :desc "Buffer"                 :nv "b" #'swiper
-          :desc "Symbols"                :nv "i" #'imenu
-          :desc "Symbols across buffers" :nv "I" #'imenu-anywhere
-          :desc "Online providers"       :nv "o" #'+lookup/online-select)
-
         (:desc "workspace" :prefix "TAB"
           :desc "Display tab bar"          :n "TAB" #'+workspace/display
-          :desc "New workspace"            :n "n"   #'+workspace/new
           :desc "Load workspace from file" :n "l"   #'+workspace/load
           :desc "Load last session"        :n "L"   (λ! (+workspace/load-session))
           :desc "Save workspace to file"   :n "s"   #'+workspace/save
           :desc "Autosave current session" :n "S"   #'+workspace/save-session
-          :desc "Switch workspace"         :n "."   #'+workspace/switch-to
           :desc "Kill all buffers"         :n "x"   #'doom/kill-all-buffers
           :desc "Delete session"           :n "X"   #'+workspace/kill-session
           :desc "Delete this workspace"    :n "d"   #'+workspace/delete
           :desc "Load session"             :n "L"   #'+workspace/load-session
-          :desc "Rename workspace"         :n "r"   #'+workspace/rename
-          :desc "Next workspace"           :n "]"   #'+workspace/switch-right
-          :desc "Previous workspace"       :n "["   #'+workspace/switch-left
-          :desc "Switch to 1st workspace"  :n "1"   (λ! (+workspace/switch-to 0))
-          :desc "Switch to 2nd workspace"  :n "2"   (λ! (+workspace/switch-to 1))
-          :desc "Switch to 3rd workspace"  :n "3"   (λ! (+workspace/switch-to 2))
-          :desc "Switch to 4th workspace"  :n "4"   (λ! (+workspace/switch-to 3))
-          :desc "Switch to 5th workspace"  :n "5"   (λ! (+workspace/switch-to 4))
-          :desc "Switch to 6th workspace"  :n "6"   (λ! (+workspace/switch-to 5))
-          :desc "Switch to 7th workspace"  :n "7"   (λ! (+workspace/switch-to 6))
-          :desc "Switch to 8th workspace"  :n "8"   (λ! (+workspace/switch-to 7))
-          :desc "Switch to 9th workspace"  :n "9"   (λ! (+workspace/switch-to 8))
-          :desc "Switch to last workspace" :n "0"   #'+workspace/switch-to-last)
+          :desc "Rename workspace"         :n "r"   #'+workspace/rename)
 
         (:desc "buffer" :prefix "b"
           :desc "New empty buffer"        :n "n" #'evil-buffer-new
           :desc "Switch workspace buffer" :n "b" #'persp-switch-to-buffer
           :desc "Switch buffer"           :n "B" #'switch-to-buffer
+          :desc "Symbols"                :nv "i" #'imenu
+          :desc "Symbols across buffers" :nv "I" #'imenu-anywhere
           :desc "Kill buffer"             :n "k" #'kill-this-buffer
           :desc "Kill other buffers"      :n "o" #'doom/kill-other-buffers
-          :desc "Save buffer"             :n "s" #'save-buffer
           :desc "Pop scratch buffer"      :n "x" #'doom/open-scratch-buffer
           :desc "Bury buffer"             :n "z" #'bury-buffer
           :desc "Next buffer"             :n "]" #'next-buffer
@@ -170,21 +118,17 @@
           :desc "Open REPL"                 :n  "r" #'+eval/open-repl
                                             :v  "r" #'+eval:repl)
 
+        (:desc "emacs setting" :prefix "e"
+          :desc "Browse emacs.d"            :n "e" #'+default/browse-emacsd
+          :desc "Browse private config"       :n "p" #'+default/browse-config)
+
         (:desc "file" :prefix "f"
-          :desc "Find file"                 :n "." #'find-file
-          :desc "Sudo find file"            :n ">" #'doom/sudo-find-file
-          :desc "Find file in project"      :n "/" #'projectile-find-file
-          :desc "Find file from here"       :n "?" #'counsel-file-jump
+          :desc "Find file"                 :n "f" #'find-file
           :desc "Find other file"           :n "a" #'projectile-find-other-file
-          :desc "Open project editorconfig" :n "c" #'editorconfig-find-current-editorconfig
           :desc "Find directory"            :n "d" #'dired
-          :desc "Find file in emacs.d"      :n "e" #'+default/find-in-emacsd
-          :desc "Browse emacs.d"            :n "E" #'+default/browse-emacsd
           :desc "Recent files"              :n "r" #'recentf-open-files
-          :desc "Recent project files"      :n "R" #'projectile-recentf
           :desc "Yank filename"             :n "y" #'+default/yank-buffer-filename
-          :desc "Find file in private config" :n "p" #'+default/find-in-config
-          :desc "Browse private config"       :n "P" #'+default/browse-config)
+          )
 
         (:desc "git" :prefix "g"
           :desc "Magit blame"           :n  "b" #'magit-blame
@@ -238,11 +182,6 @@
           :desc "From evil registers"   :nv "r" #'counsel-evil-registers
           :desc "From snippet"          :nv "s" #'yas-insert-snippet)
 
-        (:desc "notes" :prefix "n"
-          :desc "Find file in notes"    :n  "n" #'+default/find-in-notes
-          :desc "Browse notes"          :n  "N" #'+default/browse-notes
-          :desc "Org capture"           :n  "x" #'org-capture)
-
         (:desc "open" :prefix "o"
           :desc "Default browser"       :n  "b" #'browse-url-of-file
           :desc "Debugger"              :n  "d" #'+debug/open
@@ -252,6 +191,8 @@
           :desc "Neotree: on this file" :n  "N" #'+neotree/find-this-file
           :desc "Imenu sidebar"         :nv "i" #'imenu-list-smart-toggle
           :desc "Terminal"              :n  "t" #'+term/open-popup-in-project
+          :desc "Online providers"      :nv "o" #'+lookup/online-select
+          :desc "Find file in notes"    :n  "a" #'+default/find-in-notes
 
           ;; applications
           :desc "APP: elfeed"           :n "E" #'=rss
@@ -269,29 +210,17 @@
             :desc "Send project to Launchbar" :n "L" #'+macos/send-project-to-launchbar))
 
         (:desc "project" :prefix "p"
-          :desc "Browse project"          :n  "." #'+default/browse-project
-          :desc "Find file in project"    :n  "/" #'projectile-find-file
+          :desc "Browse project"          :n  "f" #'+default/browse-project
+          :desc "Jump to a project buffer" :n "b" #'counsel-projectile-switch-to-buffer
           :desc "Run cmd in project root" :nv "!" #'projectile-run-shell-command-in-root
           :desc "Compile project"         :n  "c" #'projectile-compile-project
           :desc "Find other file"         :n  "o" #'projectile-find-other-file
           :desc "Switch project"          :n  "p" #'projectile-switch-project
           :desc "Recent project files"    :n  "r" #'projectile-recentf
+          :desc "Search"                  :nv "p" #'+ivy/project-search
           :desc "List project tasks"      :n  "t" #'+ivy/tasks
+          :desc "Find file in project"    :n  "f" #'counsel-projectile-find-file
           :desc "Invalidate cache"        :n  "x" #'projectile-invalidate-cache)
-
-        (:desc "quit" :prefix "q"
-          :desc "Save and quit"          :n "q" #'evil-save-and-quit
-          :desc "Quit (forget session)"  :n "Q" #'+workspace/kill-session-and-quit
-          :desc "Restart Doom Emacs"     :n "r" #'restart-emacs)
-
-        (:when (featurep! :tools upload)
-          (:desc "remote" :prefix "r"
-            :desc "Upload local"           :n "u" #'ssh-deploy-upload-handler
-            :desc "Upload local (force)"   :n "U" #'ssh-deploy-upload-handler-forced
-            :desc "Download remote"        :n "d" #'ssh-deploy-download-handler
-            :desc "Diff local & remote"    :n "D" #'ssh-deploy-diff-handler
-            :desc "Browse remote files"    :n "." #'ssh-deploy-browse-remote-handler
-            :desc "Detect remote changes"  :n ">" #'ssh-deploy-remote-changes-handler))
 
         (:desc "snippets" :prefix "s"
           :desc "New snippet"            :n  "n" #'yas-new-snippet
@@ -300,47 +229,12 @@
           :desc "Find snippet"           :n  "S" #'+default/find-in-snippets)
 
         (:desc "toggle" :prefix "t"
-          :desc "Flyspell"               :n "s" #'flyspell-mode
           :desc "Flycheck"               :n "f" #'flycheck-mode
           :desc "Line numbers"           :n "l" #'doom/toggle-line-numbers
           :desc "Frame fullscreen"       :n "F" #'toggle-frame-fullscreen
           :desc "Indent guides"          :n "i" #'highlight-indentation-mode
           :desc "Indent guides (column)" :n "I" #'highlight-indentation-current-column-mode
-          :desc "Impatient mode"         :n "h" #'+impatient-mode/toggle
-          :desc "Big mode"               :n "b" #'doom-big-font-mode
-          :desc "Evil goggles"           :n "g" #'+evil-goggles/toggle
           :desc "org-tree-slide mode"    :n "p" #'+org-present/start))
-
-
-      ;; --- Personal vim-esque bindings ------------------
-      :nv "K"  #'+lookup/documentation
-      :n  "zx" #'kill-this-buffer
-      :n  "ZX" #'bury-buffer
-      :n  "]b" #'next-buffer
-      :n  "[b" #'previous-buffer
-      :n  "]w" #'+workspace/switch-right
-      :n  "[w" #'+workspace/switch-left
-      :m  "gt" #'+workspace/switch-right
-      :m  "gT" #'+workspace/switch-left
-      :m  "gd" #'+lookup/definition
-      :m  "gD" #'+lookup/references
-      :n  "gf" #'+lookup/file
-      :n  "gp" #'+evil/reselect-paste
-      :v  "gp" #'+evil/paste-preserve-register
-      :n  "gr" #'+eval:region
-      :n  "gR" #'+eval/buffer
-      :v  "gR" #'+eval:replace-region
-      :m  "gs" #'+default/easymotion  ; lazy-load `evil-easymotion'
-      :v  "@"  #'+evil:apply-macro
-      :n  "g@" #'+evil:apply-macro
-      ;; repeat in visual mode (FIXME buggy)
-      :v  "."  #'evil-repeat
-      ;; don't leave visual mode after shifting
-      :v  "<"  #'+evil/visual-dedent  ; vnoremap < <gv
-      :v  ">"  #'+evil/visual-indent  ; vnoremap > >gv
-
-      :nv "C-a"   #'evil-numbers/inc-at-pt
-      :nv "C-S-a" #'evil-numbers/dec-at-pt
 
 
       ;; --- Plugin bindings ------------------------------
@@ -501,15 +395,6 @@
         :n "k"   #'flycheck-error-list-previous-error
         :n "RET" #'flycheck-error-list-goto-error)
 
-      ;; flyspell
-      :m  "]S" #'flyspell-correct-word-generic
-      :m  "[S" #'flyspell-correct-previous-word-generic
-      (:after flyspell
-        ;; Press RET on misspelled words to correct them
-        (:map flyspell-mouse-map
-          "RET" #'flyspell-correct-word-generic
-          "<mouse-1>" #'flyspell-correct-word-generic))
-
       ;; git-gutter
       :m  "]d" #'git-gutter:next-hunk
       :m  "[d" #'git-gutter:previous-hunk
@@ -537,32 +422,6 @@
         :n "s"   #'gist-star
         :n "S"   #'gist-unstar
         :n "y"   #'gist-print-current-url)
-
-      ;; helm
-      (:after helm
-        (:map helm-map
-          "ESC"        nil
-          "C-S-n"      #'helm-next-source
-          "C-S-p"      #'helm-previous-source
-          "C-u"        #'helm-delete-minibuffer-contents
-          "C-w"        #'backward-kill-word
-          "C-r"        #'evil-paste-from-register ; Evil registers in helm! Glorious!
-          "C-b"        #'backward-word
-          [left]       #'backward-char
-          [right]      #'forward-char
-          [escape]     #'helm-keyboard-quit
-          [tab]        #'helm-execute-persistent-action)
-
-        (:after helm-files
-          (:map helm-generic-files-map
-            :e "ESC"     #'helm-keyboard-quit)
-          (:map helm-find-files-map
-            "C-w" #'helm-find-files-up-one-level
-            "TAB" #'helm-execute-persistent-action))
-
-        (:after helm-ag
-          (:map helm-ag-map
-            "<backtab>"  #'helm-ag-edit)))
 
       ;; hl-todo
       :m  "]t" #'hl-todo-next
