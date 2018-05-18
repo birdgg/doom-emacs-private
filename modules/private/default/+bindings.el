@@ -191,7 +191,7 @@
           :desc "REPL"                  :n  "r" #'+eval/open-repl
                                         :v  "r" #'+eval:repl
           :desc "Imenu sidebar"         :nv "i" #'imenu-list-smart-toggle
-          :desc "Eshell"                :n  "t" #'+eshell/open
+          :desc "Terminal"              :n  "t" #'+term/open-popup-in-project
           :desc "Online providers"      :nv "o" #'+lookup/online-select
           :desc "Find file in notes"    :n  "a" #'+default/find-in-notes
           :desc "APP: elfeed"           :n "E" #'=rss

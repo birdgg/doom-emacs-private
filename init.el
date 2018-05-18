@@ -41,10 +41,10 @@
        dired
        editorconfig
        electric-indent
-       eshell
        imenu
        magit
        pdf
+       term
 
        :lang
        data
