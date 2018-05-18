@@ -6,8 +6,6 @@
  org-bullets-bullet-list '("·")
  ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
 
-(map! :ne "M-/" #'comment-or-uncomment-region)
-
 ;; org
 (setq +org-dir "~/Dropbox/org/")
 

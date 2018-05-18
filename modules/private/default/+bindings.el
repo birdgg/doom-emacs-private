@@ -118,9 +118,10 @@
           :desc "Open REPL"                 :n  "r" #'+eval/open-repl
                                             :v  "r" #'+eval:repl)
 
-        (:desc "emacs setting" :prefix "e"
-          :desc "Browse emacs.d"            :n "e" #'+default/browse-emacsd
-          :desc "Browse private config"       :n "p" #'+default/browse-config)
+        (:desc "easymotion" :prefix "e"
+          :desc "word"           :n "w" #'evilem-motion-forward-word-begin
+          :desc "next line"      :n "j" #'evilem-motion-next-line
+          :desc "above line"     :n "k" #'evilem-motion-previous-line)
 
         (:desc "file" :prefix "f"
           :desc "Find file"                 :n "f" #'find-file
@@ -128,6 +129,8 @@
           :desc "Find directory"            :n "d" #'dired
           :desc "Recent files"              :n "r" #'recentf-open-files
           :desc "Yank filename"             :n "y" #'+default/yank-buffer-filename
+          :desc "Browse emacs.d"            :n "e" #'+default/browse-emacsd
+          :desc "Browse private config"     :n "p" #'+default/browse-config
           )
 
         (:desc "git" :prefix "g"
@@ -187,17 +190,11 @@
           :desc "Debugger"              :n  "d" #'+debug/open
           :desc "REPL"                  :n  "r" #'+eval/open-repl
                                         :v  "r" #'+eval:repl
-          :desc "Neotree"               :n  "n" #'+neotree/open
-          :desc "Neotree: on this file" :n  "N" #'+neotree/find-this-file
           :desc "Imenu sidebar"         :nv "i" #'imenu-list-smart-toggle
-          :desc "Terminal"              :n  "t" #'+term/open-popup-in-project
+          :desc "Eshell"                :n  "t" #'+eshell/open
           :desc "Online providers"      :nv "o" #'+lookup/online-select
           :desc "Find file in notes"    :n  "a" #'+default/find-in-notes
-
-          ;; applications
           :desc "APP: elfeed"           :n "E" #'=rss
-          :desc "APP: email"            :n "M" #'=email
-          :desc "APP: twitter"          :n "T" #'=twitter
           :desc "APP: regex"            :n "X" #'=regex
 
           ;; macos
@@ -217,7 +214,7 @@
           :desc "Find other file"         :n  "o" #'projectile-find-other-file
           :desc "Switch project"          :n  "p" #'projectile-switch-project
           :desc "Recent project files"    :n  "r" #'projectile-recentf
-          :desc "Search"                  :nv "p" #'+ivy/project-search
+          :desc "Search"                  :nv "s" #'+ivy/project-search
           :desc "List project tasks"      :n  "t" #'+ivy/tasks
           :desc "Find file in project"    :n  "f" #'counsel-projectile-find-file
           :desc "Invalidate cache"        :n  "x" #'projectile-invalidate-cache)
@@ -316,6 +313,7 @@
 
       ;; evil-commentary
       :n  "gc"  #'evil-commentary
+      :n  "M-/" #'evil-commentary-line
 
       ;; evil-exchange
       :n  "gx"  #'evil-exchange
@@ -364,17 +362,6 @@
           "C-n" #'evil-multiedit-next
           "C-p" #'evil-multiedit-prev))
 
-      ;; evil-snipe
-      (:after evil-snipe
-        :map evil-snipe-parent-transient-map
-        ;; switch to evil-easymotion/avy after a snipe
-        "C-;" (λ! (require 'evil-easymotion)
-                  (call-interactively
-                   (evilem-create #'evil-snipe-repeat
-                                  :bind ((evil-snipe-scope 'whole-buffer)
-                                         (evil-snipe-enable-highlight)
-                                         (evil-snipe-enable-incremental-highlight))))))
-
       ;; evil-surround
       :v  "S"  #'evil-surround-region
       :o  "s"  #'evil-surround-edit
@@ -408,20 +395,6 @@
           :n "]]"  #'git-timemachine-show-next-revision
           :n "q"   #'git-timemachine-quit
           :n "gb"  #'git-timemachine-blame))
-
-      ;; gist
-      (:after gist
-        :map gist-list-menu-mode-map
-        :n "RET" #'+gist/open-current
-        :n "b"   #'gist-browse-current-url
-        :n "c"   #'gist-add-buffer
-        :n "d"   #'gist-kill-current
-        :n "f"   #'gist-fork
-        :n "q"   #'quit-window
-        :n "r"   #'gist-list-reload
-        :n "s"   #'gist-star
-        :n "S"   #'gist-unstar
-        :n "y"   #'gist-print-current-url)
 
       ;; hl-todo
       :m  "]t" #'hl-todo-next
