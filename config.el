@@ -1,4 +1,5 @@
 ;;;  -*- lexical-binding: t; -*-
+(setq +pretty-code-iosevka-ligatures-enabled-by-default t)
 
 (setq
  web-mode-markup-indent-offset 2

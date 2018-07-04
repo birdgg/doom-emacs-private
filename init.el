@@ -5,8 +5,6 @@
                          ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 (setq doom-font (font-spec :family "Iosevka" :size 15)
-      doom-variable-pitch-font (font-spec :family "Iosevka")
-      doom-unicode-font (font-spec :family "Iosevka" :size 12)
       doom-big-font (font-spec :family "Iosevka" :size 19))
 
 (doom! :feature
@@ -18,7 +16,6 @@
         +docsets)
        snippets
        syntax-checker
-       version-control
        workspaces
 
        :completion
@@ -36,14 +33,20 @@
        hl-todo
        vi-tilde-fringe
        window-select
+       vc-gutter
+       fci
+       pretty-code
 
        :tools
-       dired
        editorconfig
-       electric-indent
-       imenu
        magit
        pdf
+
+       :emacs
+       dired
+       vc
+       electric
+       imenu
        term
 
        :lang
@@ -62,6 +65,6 @@
        purescript
        web
 
-       :private
+       :config
        (default +bindings +snippets +evil-commands)
 )

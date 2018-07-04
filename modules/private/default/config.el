@@ -1,6 +1,6 @@
 ;;; config/default/config.el -*- lexical-binding: t; -*-
 
-(if (featurep! +bindings) (load! +bindings))
+(if (featurep! +bindings) (load! "+bindings"))
 
 
 ;;
