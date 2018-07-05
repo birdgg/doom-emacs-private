@@ -24,6 +24,9 @@
         +childframe)
        (ivy
         +childframe)
+       (lsp
+        +javascript
+        )
 
        :ui
        (popup +all +defaults)
