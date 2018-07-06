@@ -4,8 +4,7 @@
        (evil +everywhere)
        file-templates
        (lookup
-        +devdocs
-        +docsets)
+        +devdocs)
        snippets
        syntax-checker
        workspaces
