@@ -1,4 +1,11 @@
 ;;;  -*- lexical-binding: t; -*-
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                         ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+
+(setq doom-font (font-spec :family "Iosevka" :size 15)
+      doom-big-font (font-spec :family "Iosevka" :size 19))
+
 (setq +pretty-code-iosevka-ligatures-enabled-by-default t)
 
 (setq
