@@ -12,8 +12,7 @@
 
        :completion
        (company
-        +auto
-        +childframe)
+        +auto)
        (ivy
         +childframe)
        (lsp

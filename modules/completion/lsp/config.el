@@ -9,7 +9,8 @@
   (set-lookup-handlers! 'lsp-ui-mode
                         :definition #'lsp-ui-peek-find-definitions
                         :references #'lsp-ui-peek-find-references)
-  (setq lsp-ui-doc-max-height 8
+  (setq lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-doc-max-height 8
         lsp-ui-doc-max-width 35
         lsp-ui-sideline-ignore-duplicate t))
 

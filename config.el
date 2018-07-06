@@ -14,6 +14,14 @@
  org-bullets-bullet-list '("·")
  ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
 
+(defun my-company-transformer (candidates)
+  (let ((completion-ignore-case t))
+    (all-completions (company-grab-symbol) candidates)))
+
+;; company
+(after! company
+  (push 'my-company-transformer company-transformers))
+
 ;; org
 (setq +org-dir "~/Dropbox/org/")
 
@@ -31,3 +39,21 @@
     '(("t" "Todo" entry
      (file+headline "inbox.org" "Inbox")
      "* TODO %?\n%i" :prepend t :kill-buffer t))))
+
+;; ivy
+(after! ivy
+  (setq ivy-initial-inputs-alist
+   '((org-refile . "^")
+    (org-agenda-refile . "^")
+    (org-capture-refile . "^")
+    (counsel-M-x . "^")
+    (counsel-describe-function . "^")
+    (counsel-describe-variable . "^")
+    (counsel-org-capture . "^")
+    (Man-completion-table . "^")
+    (woman . "^")))
+  (setq ivy-re-builders-alist
+        '((t . ivy--regex-plus)))
+  )
+
+(load! "+bindings")
