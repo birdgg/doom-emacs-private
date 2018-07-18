@@ -24,6 +24,8 @@
 
 ;; org
 (setq +org-dir "~/Dropbox/org/")
+(setq org-agenda-files '("~/Dropbox/org/"))
+(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
 
 (after! org
   (set-face-attribute 'org-done nil :foreground "#98be65")
@@ -38,6 +40,6 @@
   (setq org-capture-templates
     '(("t" "Todo" entry
      (file+headline "inbox.org" "Inbox")
-     "* TODO %?\n%i" :prepend t :kill-buffer t))))
+     "* TODO %?\nCREATED: %u\n%i" :prepend t :kill-buffer t))))
 
 (load! "+bindings")
