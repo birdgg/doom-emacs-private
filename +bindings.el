@@ -2,5 +2,6 @@
 
 (map!
   (:after evil
-    :n "M-/" #'evil-commentary-line)
+    :n "M-/" #'evil-commentary-line
+    :n "M-p" #'org-pomodoro)
  )

@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: rn stateless component
+# key: fc
+# --
+import React from 'react'
+import {View, Text, StyleSheet} from 'react-native'
+import {colors} from '../util/styles'
+
+const $1 = (props) => 
+    <View style={styles.row}>
+    </View>
+      
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row'
+  }
+})
+
+export default $1
