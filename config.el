@@ -1,8 +1,10 @@
 ;;;  -*- lexical-binding: t; -*-
 
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-                         ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+(setq initial-frame-alist
+      '(
+        (width . 200)
+        (height . 400)
+        ))
 
 (setq doom-font (font-spec :family "Iosevka" :size 15)
       doom-big-font (font-spec :family "Iosevka" :size 19))
@@ -50,8 +52,8 @@
   (setq org-capture-templates `(
     ("t" "Todo" entry (file+headline "inbox.org" "Inbox")
      "* TODO %?\nCREATED: %u\n%i" :prepend t :kill-buffer t)
-	("l" "Protocol Link" entry (file+headline "inbox.org" "Inbox")
-        "* [[%:link][%:description]] \nCREATED: %u" :prepend t)
+	("l" "Protocol Link" entry (file+headline "~/Dropbox/org/inbox.org" "Inbox")
+        "* [[%:link][%:description]] \nCREATED: %u" :prepend t :immediate-finish t)
    ))
    )
 
