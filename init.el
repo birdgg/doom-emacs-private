@@ -28,7 +28,6 @@
        window-select
        vc-gutter
        fci
-       pretty-code
 
        :tools
        editorconfig

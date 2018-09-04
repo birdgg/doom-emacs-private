@@ -57,4 +57,18 @@
    ))
    )
 
+(def-package! prettier-js
+  :commands (prettier-js-mode prettier-js)
+  :mode ("\\.js$" . prettify-js-mode)
+  :config
+  (setq prettier-js-args '(
+  "--trailing-comma" "all"
+  "--no-semi" "false"
+  "--single-quote" "true"
+  "--bracket-spacing" "false"
+  "--jsx-bracket-same-line" "false"
+  "--arrow-parens" "always"
+  ))
+)
+
 (load! "+bindings")
