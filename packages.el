@@ -1,6 +1,6 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
-(package! exec-path-from-shell :disable t)
+(disable-packages! exec-path-from-shell)
 (package! org-pomodoro)
 (package! prettier-js)

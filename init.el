@@ -13,7 +13,7 @@
        workspaces
 
        :completion
-       company
+       (company +auto)
        ivy
        ;;helm
        ;;ido
@@ -31,7 +31,7 @@
        ;;neotree
        treemacs
        (popup +all +defaults)
-       pretty-code
+       ;;pretty-code
        ;;unicode
        ;;tabbar
        vc-gutter
@@ -71,11 +71,7 @@
 
        :lang
        ;;assembly
-       (cc +irony +rtags)
-       crystal
        ;;clojure
-       (csharp +unity)
-       common-lisp
        data
        ;;erlang
        ;;elixir
@@ -90,20 +86,16 @@
        ;;julia
        latex
        ;;ledger
-       lua
        markdown
        ;;nim
-       nix
        ;;ocaml
        (org +attach +babel +capture +export +present)
        ;;perl
        ;;php
        ;;plantuml
        ;;purescript
-       (python +pyenv)
        rest
        ;;ruby
-       rust
        ;;scala
        sh
        ;;swift
