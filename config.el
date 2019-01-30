@@ -59,7 +59,9 @@
 
 (def-package! prettier-js
   :commands (prettier-js-mode prettier-js)
-  :mode ("\\.js$" . prettify-js-mode)
+  :init
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'rjsx-mode-hook 'prettier-js-mode)
   :config
   (setq prettier-js-args '(
   "--trailing-comma" "all"

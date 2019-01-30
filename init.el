@@ -1,62 +1,126 @@
-;;; init.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/init.el -*- lexical-binding: t; -*-
+
 (doom! :feature
+       ;;debugger
        eval
        (evil +everywhere)
-       file-templates
-       (lookup
-        +devdocs)
+       (lookup +docsets)
+       ;;services
        snippets
-       syntax-checker
+       file-templates
+       spellcheck
+       (syntax-checker +childframe)
        workspaces
 
        :completion
-       (company
-        +auto)
-       (ivy
-        +childframe)
-       ;;(lsp
-       ;; +javascript
-       ;; )
+       company
+       ivy
+       ;;helm
+       ;;ido
 
        :ui
-       (popup +all +defaults)
        doom
        doom-dashboard
-       doom-modeline
+       ;;doom-modeline
+       ;;doom-quit
+       evil-goggles
+       ;;fci
        hl-todo
+       modeline
+       nav-flash
+       ;;neotree
+       treemacs
+       (popup +all +defaults)
+       pretty-code
+       ;;unicode
+       ;;tabbar
+       vc-gutter
        vi-tilde-fringe
        window-select
-       vc-gutter
-       fci
 
-       :tools
-       editorconfig
-       magit
-       pdf
+       :editor
+       format            ; automated prettiness
+       multiple-cursors  ; editing in many places at once
+       ;;parinfer          ; turn lisp into python, sort of
+       rotate-text       ; cycle region at point between text candidates
 
        :emacs
-       dired
+       (dired +ranger)   ; making dired pretty [functional]
+       ediff             ; comparing files in Emacs
+       electric          ; smarter, keyword-based electric-indent
+       eshell            ; a consistent, cross-platform shell (WIP)
+       hideshow          ; basic code-folding support
+       imenu             ; an imenu sidebar and searchable code index
+       ;;term              ; terminals in Emacs
        vc
-       electric
-       imenu
-       term
+
+       :tools
+       docker
+       editorconfig      ; let someone else argue about tabs vs spaces
+       ;;gist              ; interacting with github gists
+       ;;macos             ; MacOS-specific commands
+       magit             ;
+       ;;make              ; run make tasks from Emacs
+       password-store    ; password manager for nerds
+       pdf               ; pdf enhancements
+       ;;prodigy           ; FIXME managing external services & code builders
+       ;;rgb               ; creating color strings
+       ;;tmux              ; an API for interacting with tmux
+       ;;upload            ; map local to remote projects via ssh/ftp
+       ;;wakatime
 
        :lang
+       ;;assembly
+       (cc +irony +rtags)
+       crystal
+       ;;clojure
+       (csharp +unity)
+       common-lisp
        data
+       ;;erlang
+       ;;elixir
+       ;;elm
        emacs-lisp
+       ;;ess
+       ;;go
        (haskell +intero)
+       ;;hy
+       ;;(java +meghanada)
        javascript
+       ;;julia
+       latex
+       ;;ledger
+       lua
        markdown
-       (org
-        +attach
-        +babel
-        +capture
-        +export
-        +present
-        +publish)
-       purescript
+       ;;nim
+       nix
+       ;;ocaml
+       (org +attach +babel +capture +export +present)
+       ;;perl
+       ;;php
+       ;;plantuml
+       ;;purescript
+       (python +pyenv)
+       rest
+       ;;ruby
+       rust
+       ;;scala
+       sh
+       ;;swift
        web
 
+       :app
+       ;;notmuch
+       ;;crm
+       ;;(email +gmail)
+       ;;irc
+       ;;regex
+       ;;(rss +org)
+       ;;torrents
+       ;;twitter
+       ;;(write
+       ;; +wordnut
+       ;; +langtool)
+
        :config
-       (default +bindings +snippets +evil-commands)
-)
+       (default +bindings +smartparens))
