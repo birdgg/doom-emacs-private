@@ -46,6 +46,8 @@
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
 )
 
+(after! js2-mode
+  (set-company-backend! 'js2-mode 'company-yasnippet))
 
 (load! "+ui")
 (load! "+bindings")
