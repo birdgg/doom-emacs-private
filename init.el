@@ -1,11 +1,9 @@
 ;;; ~/.doom.d/init.el -*- lexical-binding: t; -*-
 
 (doom! :feature
-       ;;debugger
        eval
        (evil +everywhere)
-       (lookup +docsets)
-       ;;services
+       (lookup +devdocs)
        snippets
        file-templates
        spellcheck
@@ -13,36 +11,28 @@
        workspaces
 
        :completion
-       (company +auto +childframe)
-       ivy
-       ;;helm
-       ;;ido
+       (company +auto)
+       (ivy +fuzzy)
 
        :ui
        doom
        doom-dashboard
-       ;;doom-modeline
-       ;;doom-quit
        evil-goggles
-       ;;fci
        hl-todo
        modeline
        nav-flash
-       ;;neotree
        treemacs
        (popup +all +defaults)
        ;;pretty-code
-       ;;unicode
-       ;;tabbar
        vc-gutter
        vi-tilde-fringe
        window-select
 
        :editor
-       format            ; automated prettiness
-       multiple-cursors  ; editing in many places at once
+       (format +onsave)
+       multiple-cursors
        ;;parinfer          ; turn lisp into python, sort of
-       rotate-text       ; cycle region at point between text candidates
+       rotate-text
 
        :emacs
        (dired +ranger)   ; making dired pretty [functional]
@@ -55,7 +45,6 @@
        vc
 
        :tools
-       docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;gist              ; interacting with github gists
        ;;macos             ; MacOS-specific commands
@@ -71,32 +60,16 @@
 
        :lang
        ;;assembly
-       ;;clojure
        data
-       ;;erlang
-       ;;elixir
        ;;elm
        emacs-lisp
-       ;;ess
-       ;;go
        (haskell +intero)
-       ;;hy
-       ;;(java +meghanada)
        javascript
-       ;;julia
        latex
-       ;;ledger
        markdown
-       ;;nim
-       ;;ocaml
        (org +attach +babel +capture +export +present)
-       ;;perl
-       ;;php
-       ;;plantuml
        ;;purescript
        rest
-       ;;ruby
-       ;;scala
        sh
        ;;swift
        web

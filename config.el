@@ -1,10 +1,5 @@
 ;;;  -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "Iosevka" :size 22)
-      doom-big-font (font-spec :family "Iosevka" :size 40))
-
-(setq +pretty-code-iosevka-ligatures-enabled-by-default t)
-
 (setq
  web-mode-markup-indent-offset 2
  js-indent-level 2
@@ -51,6 +46,6 @@
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
 )
 
-(setq doom-theme 'atom-one-dark)
 
+(load! "+ui")
 (load! "+bindings")
