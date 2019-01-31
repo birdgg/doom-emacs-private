@@ -51,4 +51,6 @@
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
 )
 
+(setq doom-theme 'atom-one-dark)
+
 (load! "+bindings")
