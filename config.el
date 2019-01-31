@@ -1,13 +1,7 @@
 ;;;  -*- lexical-binding: t; -*-
 
-(setq initial-frame-alist
-      '(
-        (width . 200)
-        (height . 400)
-        ))
-
-(setq doom-font (font-spec :family "Iosevka" :size 15)
-      doom-big-font (font-spec :family "Iosevka" :size 19))
+(setq doom-font (font-spec :family "Iosevka" :size 22)
+      doom-big-font (font-spec :family "Iosevka" :size 40))
 
 (setq +pretty-code-iosevka-ligatures-enabled-by-default t)
 
@@ -19,13 +13,6 @@
 
 (add-hook 'org-load-hook '(lambda () (setq org-modules (append '(org-protocol org-habit) org-modules))))
 
-(defun my-company-transformer (candidates)
-  (let ((completion-ignore-case t))
-    (all-completions (company-grab-symbol) candidates)))
-
-;; company
-;;(after! company
-;;  (push 'my-company-transformer company-transformers))
 
 ;; org
 (setq +org-dir "~/Dropbox/org/")
@@ -62,15 +49,6 @@
   :init
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
-  :config
-  (setq prettier-js-args '(
-  "--trailing-comma" "all"
-  "--no-semi" "false"
-  "--single-quote" "true"
-  "--bracket-spacing" "false"
-  "--jsx-bracket-same-line" "false"
-  "--arrow-parens" "always"
-  ))
 )
 
 (load! "+bindings")

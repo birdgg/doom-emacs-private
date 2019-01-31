@@ -13,7 +13,7 @@
        workspaces
 
        :completion
-       (company +auto)
+       (company +auto +childframe)
        ivy
        ;;helm
        ;;ido
@@ -51,7 +51,7 @@
        eshell            ; a consistent, cross-platform shell (WIP)
        hideshow          ; basic code-folding support
        imenu             ; an imenu sidebar and searchable code index
-       ;;term              ; terminals in Emacs
+       term              ; terminals in Emacs
        vc
 
        :tools
