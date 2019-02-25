@@ -6,8 +6,6 @@
        (lookup +devdocs)
        snippets
        file-templates
-       spellcheck
-       (syntax-checker +childframe)
        workspaces
 
        :completion
@@ -31,31 +29,25 @@
        :editor
        (format +onsave)
        multiple-cursors
-       ;;parinfer          ; turn lisp into python, sort of
        rotate-text
+       fold
 
        :emacs
        (dired +ranger)   ; making dired pretty [functional]
-       ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
        eshell            ; a consistent, cross-platform shell (WIP)
-       hideshow          ; basic code-folding support
        imenu             ; an imenu sidebar and searchable code index
        term              ; terminals in Emacs
        vc
 
        :tools
+       lsp
+       flyspell
+       flycheck
        editorconfig      ; let someone else argue about tabs vs spaces
-       ;;gist              ; interacting with github gists
-       ;;macos             ; MacOS-specific commands
        magit             ;
-       ;;make              ; run make tasks from Emacs
        password-store    ; password manager for nerds
        pdf               ; pdf enhancements
-       ;;prodigy           ; FIXME managing external services & code builders
-       ;;rgb               ; creating color strings
-       ;;tmux              ; an API for interacting with tmux
-       ;;upload            ; map local to remote projects via ssh/ftp
        ;;wakatime
 
        :lang

@@ -46,8 +46,16 @@
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
 )
 
+(setq company-idle-delay 0.2)
+
 (after! js2-mode
-  (set-company-backend! 'js2-mode 'company-yasnippet))
+  (set-company-backend! 'js2-mode
+    '(:separate company-tide company-yasnippet)))
+
+;; (after! js2-mode
+;;   (set-company-backend! 'js2-mode 'company-yasnippet :separate nil)
+;;   (set-company-backend! 'tide-mode 'company-yasnippet)
+;;   (set-company-backend! 'rjsx-mode 'company-yasnippet))
 
 (load! "+ui")
 (load! "+bindings")
