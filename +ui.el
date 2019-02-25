@@ -1,7 +1,16 @@
 ;;; ~/.doom.d/+ui.el -*- lexical-binding: t; -*-
 
+(setq doom-theme 'misterioso)
 ;; Fonts
-;; 1920x1080, half screen at size 22 gives 80 columns 35 lines
-(setq doom-font (font-spec :family "Iosevka" :size 22))
-;; On my 1920x1080, full screen gives about 90 columns 19 lines
+(setq doom-font (font-spec :family "Iosevka" :size 20))
 (setq doom-big-font (font-spec :family "Iosevka" :size 40))
+
+;; without titlebar
+(add-to-list 'default-frame-alist
+             '(ns-transparent-titlebar . t))
+
+(add-to-list 'default-frame-alist
+             '(ns-appearance . dark))
+
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
