@@ -39,23 +39,14 @@
    ))
    )
 
-(def-package! prettier-js
-  :commands (prettier-js-mode prettier-js)
-  :init
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'rjsx-mode-hook 'prettier-js-mode)
-)
-
-(setq company-idle-delay 0.2)
-
-(after! js2-mode
-  (set-company-backend! 'js2-mode
-    '(:separate company-tide company-yasnippet)))
+;; (setq company-idle-delay 0.2)
 
 ;; (after! js2-mode
-;;   (set-company-backend! 'js2-mode 'company-yasnippet :separate nil)
-;;   (set-company-backend! 'tide-mode 'company-yasnippet)
-;;   (set-company-backend! 'rjsx-mode 'company-yasnippet))
+;;   (set-company-backend! 'js2-mode
+;;     '(:separate company-lsp company-yasnippet)))
+
+;; (setq company-lsp-cache-candidates 'auto)
+;; (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
 
 (load! "+ui")
 (load! "+bindings")

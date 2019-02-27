@@ -3,4 +3,3 @@
 
 (disable-packages! exec-path-from-shell)
 (package! org-pomodoro)
-(package! prettier-js)

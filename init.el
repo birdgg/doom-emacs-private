@@ -9,7 +9,7 @@
        workspaces
 
        :completion
-       (company +auto)
+       (company +auto +childframe)
        (ivy +fuzzy)
 
        :ui
@@ -55,8 +55,8 @@
        data
        ;;elm
        emacs-lisp
-       (haskell +intero)
-       javascript
+       (haskell +lsp)
+       (javascript +lsp)
        latex
        markdown
        (org +attach +babel +capture +export +present)
