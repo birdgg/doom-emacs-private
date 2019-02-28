@@ -33,11 +33,11 @@
        fold
 
        :emacs
-       (dired +ranger)   ; making dired pretty [functional]
-       electric          ; smarter, keyword-based electric-indent
-       eshell            ; a consistent, cross-platform shell (WIP)
-       imenu             ; an imenu sidebar and searchable code index
-       term              ; terminals in Emacs
+       (dired +ranger)
+       electric
+       eshell
+       imenu
+       term
        vc
 
        :tools
@@ -51,7 +51,6 @@
        ;;wakatime
 
        :lang
-       ;;assembly
        data
        ;;elm
        emacs-lisp
@@ -67,17 +66,7 @@
        web
 
        :app
-       ;;notmuch
-       ;;crm
-       ;;(email +gmail)
-       ;;irc
-       ;;regex
-       ;;(rss +org)
-       ;;torrents
-       ;;twitter
-       ;;(write
-       ;; +wordnut
-       ;; +langtool)
+
 
        :config
        (default +bindings +smartparens))

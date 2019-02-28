@@ -14,3 +14,10 @@
 
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+(defun +my/set-faces ()
+  (custom-set-faces
+   '(company-tooltip
+     ((t (:background "#2d3743"))))))
+
+(add-hook! 'doom-load-theme-hook #'+my/set-faces)
