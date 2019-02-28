@@ -39,14 +39,29 @@
    ))
    )
 
-;; (setq company-idle-delay 0.2)
+(setq company-idle-delay 0.2)
+(setq company-minimum-prefix-length 2)
+(setq company-lsp-cache-candidates 'auto)
 
-;; (after! js2-mode
-;;   (set-company-backend! 'js2-mode
-;;     '(:separate company-lsp company-yasnippet)))
+;; fix company-box scollbar width
+(set-popup-rule! "^\\*company-box-" :ignore t)
 
-;; (setq company-lsp-cache-candidates 'auto)
-;; (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
+(defun my-company-transformer (candidates)
+  (let ((completion-ignore-case t))
+    (if (and (car candidates)
+                (get-text-property 0 'lsp-completion-prefix (car candidates)))
+        (all-completions (company-grab-symbol) candidates)
+    candidates
+    )
+  )
+)
+
+(defun my-js-hook nil
+  (make-local-variable 'company-transformers)
+  (push 'my-company-transformer company-transformers))
+
+(add-hook 'js2-mode-hook 'my-js-hook)
+
 
 (load! "+ui")
 (load! "+bindings")

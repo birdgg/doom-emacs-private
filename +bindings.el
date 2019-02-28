@@ -15,6 +15,7 @@
    "M-s" #'evil-write-all
    "M-p" #'counsel-git
    "M-a" #'mark-whole-buffer
+   "M-c" #'evil-yank
    "M-v" #'yank
    "M-f" #'swiper
    "M-/" #'evil-commentary))
@@ -30,9 +31,10 @@
 
 ;; leader key
 (map! :leader
+      (:prefix ("l" . "lsp")
+        :desc "toggle lsp ui sideline" "t" #'lsp-ui-sideline-toggle-symbols-info)
+      (:prefix "f"
+        :desc "browser org files"  "o" #'+default/browse-notes)
       (:prefix "w"
         :desc "maximize window" "m" #'maximize-window
-        :desc "minimize window" "n" #'minimize-window)
-      (:prefix "b"
-        :desc "switch to previous buffer" "p" #'switch-to-prev-buffer
-        :desc "switch to next buffer" "n" #'switch-to-next-buffer))
+        :desc "minimize window" "n" #'minimize-window))
