@@ -21,3 +21,5 @@
      ((t (:background "#2d3743"))))))
 
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
+
+(set-popup-rule! "^\\*company-box-" :ignore t)

@@ -3,7 +3,6 @@
 (setq
  web-mode-markup-indent-offset 2
  js-indent-level 2
- org-bullets-bullet-list '("·")
  )
 
 (add-hook 'org-load-hook '(lambda () (setq org-modules (append '(org-protocol org-habit) org-modules))))
@@ -14,7 +13,23 @@
 (setq org-agenda-files '("~/Dropbox/org/"))
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
 
+(setq org-bullets-bullet-list
+                        `(
+                    ,(all-the-icons-material "filter")
+                    ,(all-the-icons-material "adb")
+                    ,(all-the-icons-faicon "folder-o")
+                    ,(all-the-icons-faicon "inbox")
+                    ,(all-the-icons-faicon "book")
+                    ,(all-the-icons-faicon "file-text-o")
+                    ,(all-the-icons-faicon "file-o")
+                    ,(all-the-icons-faicon "floppy-o")
+                    ,(all-the-icons-faicon "header")
+                    ,(all-the-icons-faicon "bookmark")
+                    ,(all-the-icons-faicon "bookmark-o")
+                    ,(all-the-icons-faicon "paperclip")
+                    ,(all-the-icons-faicon "hashtag")))
 (after! org
+  ;; (setq org-bullets-face-name "Material Icons")
   (set-face-attribute 'org-done nil :foreground "#98be65")
   (set-face-attribute 'org-todo nil :foreground "#c678dd")
   (set-face-attribute 'org-ellipsis nil :foreground "#c678dd")
@@ -51,8 +66,6 @@
 (setq company-minimum-prefix-length 2)
 (setq company-lsp-cache-candidates 'auto)
 
-;; fix company-box scollbar width
-(set-popup-rule! "^\\*company-box-" :ignore t)
 
 (defun my-company-transformer (candidates)
   (let ((completion-ignore-case t))
