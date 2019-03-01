@@ -39,6 +39,14 @@
    ))
    )
 
+(def-package! org-wild-notifier
+  :defer t
+  :init
+  (add-hook 'doom-post-init-hook #'org-wild-notifier-mode t)
+  :config
+  (setq org-wild-notifier-alert-time 15
+        alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
+
 (setq company-idle-delay 0.2)
 (setq company-minimum-prefix-length 2)
 (setq company-lsp-cache-candidates 'auto)

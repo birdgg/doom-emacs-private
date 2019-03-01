@@ -2,4 +2,5 @@
 ;;; ~/.doom.d/packages.el
 
 (disable-packages! exec-path-from-shell)
-(package! org-pomodoro)
+(packages! org-pomodoro
+          org-wild-notifier)
