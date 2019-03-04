@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+const child_process = require('child_process')
+const fs = require('fs')
+const path = require('path')
+const os = require('os')
+
+
+const emacsIcon = path.resolve(os.homedir(), '.doom.d/images/Emacs.icns')
+const emacsPath = child_process.execSync("which emacs", {encoding: 'utf-8'}).trim()
+const realEmacsPath = fs.readlinkSync(emacsPath, {encoding: 'utf-8'}) 
+const emacsAppPath = path.resolve(emacsPath, '../' + realEmacsPath).split('/').slice(0,-2).join('/') + '/Emacs.app'
+
+fs.copyFileSync(emacsIcon, emacsAppPath + '/Contents/Resources/Emacs.icns')
+
+child_process.execSync('touch ' + emacsAppPath)
+
