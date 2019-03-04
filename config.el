@@ -7,7 +7,6 @@
 
 (add-hook 'org-load-hook '(lambda () (setq org-modules (append '(org-protocol org-habit) org-modules))))
 
-
 ;; org
 (setq +org-dir "~/Dropbox/org/")
 (setq org-agenda-files '("~/Dropbox/org/"))
@@ -15,19 +14,10 @@
 
 (setq org-bullets-bullet-list
                         `(
-                    ,(all-the-icons-material "filter")
-                    ,(all-the-icons-material "adb")
-                    ,(all-the-icons-faicon "folder-o")
-                    ,(all-the-icons-faicon "inbox")
-                    ,(all-the-icons-faicon "book")
-                    ,(all-the-icons-faicon "file-text-o")
-                    ,(all-the-icons-faicon "file-o")
-                    ,(all-the-icons-faicon "floppy-o")
-                    ,(all-the-icons-faicon "header")
-                    ,(all-the-icons-faicon "bookmark")
-                    ,(all-the-icons-faicon "bookmark-o")
-                    ,(all-the-icons-faicon "paperclip")
-                    ,(all-the-icons-faicon "hashtag")))
+                    ,(all-the-icons-material "filter_1")
+                    ,(all-the-icons-material "filter_2")
+                    ,(all-the-icons-material "filter_3")
+                    ,(all-the-icons-material "filter_4")))
 (after! org
   ;; (setq org-bullets-face-name "Material Icons")
   (set-face-attribute 'org-done nil :foreground "#98be65")
