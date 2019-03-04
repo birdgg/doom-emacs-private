@@ -8,6 +8,10 @@
 (set-fontset-font t '(#Xe000 . #Xe90f) "Material Icons")
 (set-fontset-font t '(#Xe100 . #Xe1cc) "Iosevka")
 
+;; banner
+(setq +doom-dashboard-banner-file (expand-file-name "banners/yayoi.png" doom-private-dir))
+(setq +doom-dashboard-banner-padding '(1 . 1))
+
 
 ;; without titlebar
 (add-to-list 'default-frame-alist
