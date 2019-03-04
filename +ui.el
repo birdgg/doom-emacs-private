@@ -12,6 +12,13 @@
 (setq +doom-dashboard-banner-file (expand-file-name "banners/yayoi.png" doom-private-dir))
 (setq +doom-dashboard-banner-padding '(1 . 1))
 
+;; modeline
+(setq doom-modeline-height 30)
+(setq doom-modeline-major-mode-icon t)
+(setq doom-modeline-major-mode-color-icon t)
+(setq doom-modeline-persp-name t)
+(setq doom-modeline-lsp t)
+
 
 ;; without titlebar
 (add-to-list 'default-frame-alist
