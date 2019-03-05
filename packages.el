@@ -3,4 +3,5 @@
 
 (disable-packages! exec-path-from-shell)
 (packages! org-pomodoro
-          org-wild-notifier)
+           orca
+           org-wild-notifier)
