@@ -30,16 +30,14 @@
         '((sequence "[ ](t)" "[-](p)" "[?](m)" "|" "[X](d)")
           (sequence "TODO(T)" "|" "DONE(D)")
           (sequence "NEXT(n)" "ACTIVE(a)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)")))
-  ;; (setq org-capture-templates `(
-  ;;   ("t" "Todo" entry (file+headline "inbox.org" "Inbox")
-  ;;    "* TODO %?\nCREATED: %u\n%i" :prepend t :kill-buffer t)
 
-    ;; ("p" "Protocol" entry (file+headline ,(concat org-directory "inbox.org") "Inbox")
-    ;;     "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n%?")
-	;; ("L" "Protocol Link" entry (file+headline ,(concat org-directory "inbox.org") "Inbox")
-    ;;     "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n")
-
-   ;; ))
+  (after! orca
+    (setq org-capture-templates
+            `(("t" "TODO" entry (file+headline, (concat org-directory "inbox.org") "Inbox")
+            "* TODO %?\nAdded: %T\n" :prepend t :kill-buffer t)
+            ("l" "Link" entry (function orca-handle-link)
+            "* TODO %:link\nAdded: %T\n")
+            )))
    )
 
 (def-package! org-wild-notifier
@@ -51,18 +49,27 @@
         alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
 
 (def-package! orca
-  :init
+  :config
   (setq orca-handler-list
-      '((orca-handler-match-url
-         "https://www.reddit.com/emacs/"
-         "~/Dropbox/org/emacs.org"
+      `((orca-handler-match-url
+         "https://www.reddit.com/"
+         "~/Dropbox/org/inbox.org"
          "Reddit")
         (orca-handler-match-url
          "https://emacs.stackexchange.com/"
-         "~/Dropbox/org/emacs.org"
+         "~/Dropbox/org/inbox.org"
          "\\* Questions")
-        (orca-handler-current-buffer
-         "\\* Tasks")
+        ;; (orca-handler-current-buffer
+        ;;  "\\* Inbox")
         (orca-handler-file
-         "~/Dropbox/org/ent.org"
-         "\\* Articles"))))
+         "~/Dropbox/org/inbox.org"
+         "\\* Inbox"))))
+
+(defun orfu-wash-link ()
+  "Return a pretty-printed top of `org-stored-links'.
+Try to remove superfluous information, like website title."
+  (let ((link (caar org-stored-links))
+        (title (cl-cadar org-stored-links)))
+    (org-make-link-string
+     link
+     (org-link-unescape title))))
