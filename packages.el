@@ -3,5 +3,5 @@
 
 (disable-packages! exec-path-from-shell)
 (packages! org-pomodoro
-           orca
+           (orca :recipe (:fetcher github :repo "birdgg/orca"))
            org-wild-notifier)

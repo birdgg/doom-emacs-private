@@ -36,7 +36,7 @@
             `(("t" "TODO" entry (file+headline, (concat org-directory "inbox.org") "Inbox")
             "* TODO %?\nAdded: %T\n" :prepend t :kill-buffer t)
             ("l" "Link" entry (function orca-handle-link)
-            "* TODO %:link\nAdded: %T\n")
+            "* TODO %(orfu-wash-link)\nAdded: %T\n" :prepend t :kill-buffer t)
             )))
    )
 
@@ -59,8 +59,6 @@
          "https://emacs.stackexchange.com/"
          "~/Dropbox/org/inbox.org"
          "\\* Questions")
-        ;; (orca-handler-current-buffer
-        ;;  "\\* Inbox")
         (orca-handler-file
          "~/Dropbox/org/inbox.org"
          "\\* Inbox"))))
@@ -71,5 +69,6 @@ Try to remove superfluous information, like website title."
   (let ((link (caar org-stored-links))
         (title (cl-cadar org-stored-links)))
     (org-make-link-string
-     link
+     (org-link-unescape link)
+     ;; link
      (org-link-unescape title))))
