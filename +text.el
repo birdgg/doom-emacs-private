@@ -58,7 +58,11 @@
         (orca-handler-match-url
          "https://emacs.stackexchange.com/"
          "~/Dropbox/org/inbox.org"
-         "\\* Questions")
+         "Questions")
+        (orca-handler-match-url
+         "https://www.github.com/"
+         "~/Dropbox/org/inbox.org"
+         "Github")
         (orca-handler-file
          "~/Dropbox/org/inbox.org"
          "\\* Inbox"))))
@@ -70,5 +74,4 @@ Try to remove superfluous information, like website title."
         (title (cl-cadar org-stored-links)))
     (org-make-link-string
      (org-link-unescape link)
-     ;; link
      (org-link-unescape title))))

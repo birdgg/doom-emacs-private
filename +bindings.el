@@ -1,6 +1,9 @@
 ;;; ~/.doom.d/+bindings.el -*- lexical-binding: t; -*-
 
 (map!
+ :n "gb" #'evil-jump-backward)
+
+(map!
  (:after lsp-ui
    :map lsp-ui-mode-map
    "C-j" #'lsp-ui-doc-show
@@ -23,4 +26,6 @@
       (:prefix ("l" . "lsp")
         :desc "toggle lsp ui sideline" "t" #'lsp-ui-sideline-toggle-symbols-info)
       (:prefix "f"
+        :desc "find file"                   "f" #'find-file
+        :desc "find project in worksapce"   "w" #'+my/browse-workspace
         :desc "browser org files"  "o" #'+default/browse-notes))
