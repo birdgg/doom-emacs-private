@@ -8,7 +8,7 @@
 
 (setq company-idle-delay 0.2)
 (setq company-minimum-prefix-length 2)
-(setq company-lsp-cache-candidates 'auto)
+(setq company-lsp-cache-candidates nil)
 
 
 (defun my-company-transformer (candidates)
@@ -25,7 +25,7 @@
   (make-local-variable 'company-transformers)
   (push 'my-company-transformer company-transformers))
 
-(add-hook 'js2-mode-hook 'my-js-hook)
+;; (add-hook 'js2-mode-hook 'my-js-hook)
 
 (load! "+ui")
 (load! "+bindings")
