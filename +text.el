@@ -21,7 +21,8 @@
   (setq org-tags-column -100
         org-log-done 'time
         org-fontify-done-headline nil
-        org-ellipsis " ↴ ")
+        org-ellipsis " ↴ "
+        org-hide-emphasis-markers t)
   (setq org-tag-alist '(("@office" . ?o)
                          ("@home" . ?h)
                          (:newline)

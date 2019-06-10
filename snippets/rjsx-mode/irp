@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: irp
+# key: irp
+# --
+import React, {PureComponent} from 'react'

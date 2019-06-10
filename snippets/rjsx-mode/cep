@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: cep
+# key: cep
+# --
+class $1 extends PureComponent {
+  render() {
+    return (<View/>)
+  }
+}
+
+export default $1

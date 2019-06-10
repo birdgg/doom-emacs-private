@@ -1,60 +1,59 @@
 ;;; ~/.doom.d/init.el -*- lexical-binding: t; -*-
 
-(doom! :feature
-       eval
-       (evil +everywhere)
-       (lookup +devdocs)
-       snippets
-       file-templates
-       workspaces
-
+(doom! 
        :completion
-       (company +auto +childframe)
-       (ivy +fuzzy)
+       (company +auto)
+       (ivy +icons +prescient)
 
        :ui
        doom
        doom-dashboard
-       evil-goggles
        hl-todo
        modeline
        nav-flash
        treemacs
        (popup +all +defaults)
-       ;; (pretty-code +iosevka)
        vc-gutter
        vi-tilde-fringe
        window-select
+       workspaces
+       ophints
 
        :editor
-       (format +onsave)
+       (evil +everywhere)
+       file-templates
+       format
        multiple-cursors
        rotate-text
        fold
+       snippets
 
        :emacs
-       (dired +ranger)
+       (dired +ranger +icons)
        electric
-       eshell
        imenu
-       term
        vc
+
+       :term
+       vterm
+       eshell
 
        :tools
        lsp
-       flyspell
        flycheck
-       editorconfig      ; let someone else argue about tabs vs spaces
-       magit             ;
-       password-store    ; password manager for nerds
-       pdf               ; pdf enhancements
+       editorconfig
+       magit
+       pdf
+       eval
+      (lookup +devdocs)
+      macos
        ;;wakatime
 
        :lang
        data
        ;;elm
        emacs-lisp
-       (haskell +lsp)
+       haskell
        (javascript +lsp)
        latex
        markdown
@@ -66,7 +65,6 @@
        web
 
        :app
-
 
        :config
        (default +bindings +smartparens))
