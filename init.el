@@ -31,7 +31,6 @@
        :emacs
        (dired +ranger +icons)
        electric
-       imenu
        vc
 
        :term
@@ -53,11 +52,11 @@
        data
        ;;elm
        emacs-lisp
-       haskell
+       (haskell +lsp)
        (javascript +lsp)
        latex
        markdown
-       (org +attach +babel +capture +export +present)
+       (org +present +dragndrop)
        ;;purescript
        rest
        sh
