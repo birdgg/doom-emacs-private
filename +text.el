@@ -32,47 +32,7 @@
           (sequence "TODO(T)" "|" "DONE(D)")
           (sequence "NEXT(n)" "ACTIVE(a)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)")))
 
-  (after! orca
-    (setq org-capture-templates
-            `(("t" "TODO" entry (file+headline, (concat org-directory "inbox.org") "Inbox")
-            "* TODO %?\nAdded: %T\n" :prepend t :kill-buffer t)
-            ("l" "Link" entry (function orca-handle-link)
-            "* TODO %(orfu-wash-link)\nAdded: %T\n" :prepend t :kill-buffer t)
-            )))
-   )
-
-(def-package! org-wild-notifier
-  :defer t
-  :init
-  (add-hook 'doom-post-init-hook #'org-wild-notifier-mode t)
-  :config
-  (setq org-wild-notifier-alert-time 15
-        alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
-
-(def-package! orca
-  :config
-  (setq orca-handler-list
-      `((orca-handler-match-url
-         "https://www.reddit.com/"
-         "~/Dropbox/org/inbox.org"
-         "Reddit")
-        (orca-handler-match-url
-         "https://emacs.stackexchange.com/"
-         "~/Dropbox/org/inbox.org"
-         "Questions")
-        (orca-handler-match-url
-         "https://www.github.com/"
-         "~/Dropbox/org/inbox.org"
-         "Github")
-        (orca-handler-file
-         "~/Dropbox/org/inbox.org"
-         "\\* Inbox"))))
-
-(defun orfu-wash-link ()
-  "Return a pretty-printed top of `org-stored-links'.
-Try to remove superfluous information, like website title."
-  (let ((link (caar org-stored-links))
-        (title (cl-cadar org-stored-links)))
-    (org-make-link-string
-     (org-link-unescape link)
-     (org-link-unescape title))))
+  (setq org-capture-templates
+          `(("t" "TODO" entry (file+headline, (concat org-directory "inbox.org") "Inbox")
+          "* TODO %?\nAdded: %T\n" :prepend t :kill-buffer t)
+          )))

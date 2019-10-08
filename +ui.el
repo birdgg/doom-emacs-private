@@ -15,11 +15,11 @@
 
 (setq doom-theme 'misterioso)
 ;; Fonts
-(setq doom-font (font-spec :family "Sarasa Term SC" :size 20))
-(setq doom-big-font (font-spec :family "Sarasa Term SC" :size 40))
+(setq doom-font (font-spec :family "Iosevka" :size 20))
+(setq doom-big-font (font-spec :family "Iosevka" :size 40))
 
 (set-fontset-font t '(#Xe000 . #Xe90f) "Material Icons")
-(set-fontset-font t '(#Xe100 . #Xe1cc) "Iosevka")
+;; (set-fontset-font t '(#Xe100 . #Xe1cc) "Iosevka")
 
 ;; banner
 (setq +doom-dashboard-banner-file (expand-file-name "banners/yayoi.png" doom-private-dir))
