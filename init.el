@@ -12,8 +12,8 @@
        modeline
        (treemacs +lsp)
        (popup +all +defaults)
-       ;; vc-gutter
        vi-tilde-fringe
+       workspaces
        window-select
        (ligatures +extra +iosevka)
        (emoji +ascii +github +unicode)

@@ -1,62 +1,44 @@
 ;;; ~/.doom.d/+ui.el -*- lexical-binding: t; -*-
-(if (featurep 'cocoa)
-    (progn
-      (setq ns-use-native-fullscreen nil)
-      (setq ns-use-fullscreen-animation nil)
-
-      (add-to-list 'default-frame-alist '(fullscreen . maximized))
-      ;; 默认先最大化。
-      ;; (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-      )
-
-  ;; 非Mac平台直接全屏
-  (require 'fullscreen)
-  (fullscreen))
-
+;; Theme
 ;; (setq doom-theme 'misterioso)
-(setq doom-theme 'doom-one)
-;; Fonts
-(setq doom-font (font-spec :family "Iosevka" :size 20)
-      doom-big-font (font-spec :family "Iosevka" :size 40))
+(setq doom-theme 'doom-moonlight)
 
-;; (set-fontset-font t '(#Xe000 . #Xe90f) "Material Icons")
-;; (set-fontset-font t '(#Xe100 . #Xe1cc) "Iosevka")
+(when (display-graphic-p)
+  ;; title bar
+  (setq frame-resize-pixelwise t)
+  (add-to-list 'default-frame-alist '(undecorated . t))
+  ;; font
+  (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
+  (setq doom-font (font-spec :family "Iosevka SS09" :size (eval (round (* 22 resolution-factor))))
+        doom-big-font (font-spec :family "Iosevka SS09" :size (eval (round (* 28 resolution-factor))))
+        ;; doom-variable-pitch-font (font-spec :family user-font :size (eval (round (* 13 resolution-factor))))
+        doom-modeline-height (eval (round (* 14 resolution-factor))))
+  (setq doom-font-increment 1)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;; banner
-(setq +doom-dashboard-banner-file (expand-file-name "banners/yayoi.png" doom-private-dir))
-(setq +doom-dashboard-banner-padding '(1 . 1))
+  (add-hook! 'doom-first-buffer-hook
+    (defun +my/change-cjk-font ()
+      "change the cjk font and its size to align the org/markdown tables when have
+cjk characters. Font should be twice the width of asci chars so that org tables align.
+This will break if run in terminal mode, so use conditional to only run for GUI."
+      (when (display-graphic-p)
+        (setq user-cjk-font
+              (cond
+               ((find-font (font-spec :name "Sarasa Mono SC")) "Sarasa Mono SC")
+               ))
+        (dolist (charset '(kana han cjk-misc bopomofo))
+          (set-fontset-font (frame-parameter nil 'font)
+                            charset (font-spec :family user-cjk-font
+                                               :size (eval (round (* 22 resolution-factor)))))))))
+  (after! doom-modeline
+    (setq doom-modeline-major-mode-icon t))
+  ;; dashboard
+  (setq +doom-dashboard-menu-sections (cl-subseq +doom-dashboard-menu-sections 0 5))
+  (setq +doom-dashboard-functions (cl-subseq +doom-dashboard-functions 0 3))
+  (let ((splash (expand-file-name "banners/ll.png" doom-private-dir)))
+    (setq fancy-splash-image splash))
+  )
 
-;; modeline
-(setq doom-modeline-height 30)
-(setq doom-modeline-major-mode-icon t)
-(setq doom-modeline-major-mode-color-icon t)
-(setq doom-modeline-persp-name t)
-(setq doom-modeline-lsp t)
-
-
-
-(tool-bar-mode -1)                      
+(tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(setq lsp-ui-sideline-enable nil)
-(setq lsp-ui-sideline-ignore-duplicate t)
-
-
-;; without titlebar
-;; (add-to-list 'default-frame-alist
-;;              '(ns-transparent-titlebar . t))
-
-;; (add-to-list 'default-frame-alist
-;;              '(ns-appearance . dark))
-
-;; (custom-set-variables
-;;  '(initial-frame-alist (quote ((fullscreen . maximized)))))
-
-;; (defun +my/set-faces ()
-;;   (custom-set-faces
-;;    '(company-tooltip
-;;      ((t (:background "#2d3743"))))))
-
-;; (add-hook! 'doom-load-theme-hook #'+my/set-faces)
-
-;; (set-popup-rule! "^\\*company-box-" :ignore t)

@@ -10,15 +10,17 @@ ln -s /usr/local/opt/emacs-plus@28/Emacs.app /Applications
 *** Install Doom Emacs
 #+begin_src shell
 brew install grep ripgrep fd coreutils sqlite pcre pngpaste gnuplot cmake
-brew install --cask font-iosevka
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-~/.emacs.d/bin/doom install
+echo "export PATH=~/.emacs.d/bin:$PATH" >> .zshenv
 #+end_src
-
 *** Install Doom config
 #+begin_src shell
 glt clone https://github.com/birdgg/doom-emacs-private.git ~/.doom.d
+doom install
+brew install --cask font-iosevka
 #+end_src
-
+install chinese font support https://mirrors.tuna.tsinghua.edu.cn/github-release/be5invis/Sarasa-Gothic/
+** Modules
+*** Org Mode
 ** Help
- check variable description `SPC h v`
+ check variable description ~SPC h v~
