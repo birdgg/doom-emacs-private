@@ -1,30 +1,27 @@
 ;;; ~/.doom.d/init.el -*- lexical-binding: t; -*-
-
-(doom! 
+(doom!
        :completion
-       (company +auto)
-       (ivy +icons +prescient)
+       (company +childframe)
+       (vertico +icons)
 
        :ui
        doom
        doom-dashboard
        hl-todo
+       hydra
        modeline
-       nav-flash
-       treemacs
+       (treemacs +lsp)
        (popup +all +defaults)
-       vc-gutter
+       ;; vc-gutter
        vi-tilde-fringe
        window-select
-       workspaces
-       ophints
+       (ligatures +extra +iosevka)
+       (emoji +ascii +github +unicode)
 
        :editor
        (evil +everywhere)
-       file-templates
-       format
+       (format +onsave)
        multiple-cursors
-       rotate-text
        fold
        snippets
 
@@ -34,34 +31,22 @@
        vc
 
        :term
-       vterm
        eshell
 
+       :checkers
+       (syntax +childframe)
+
        :tools
-       lsp
-       flycheck
+       (lsp +peek)
        editorconfig
        magit
-       pdf
        eval
-      (lookup +devdocs)
-      macos
-       ;;wakatime
 
        :lang
-       data
-       ;;elm
        emacs-lisp
-       (haskell +lsp)
        (javascript +lsp)
-       latex
        markdown
-       (org +present +dragndrop)
-       ;;purescript
-       rest
-       sh
-       ;;swift
-       web
+       (org +present +dragndrop +journal +roam2 +brain +gnuplot +hugo +noter +pomodoro +pretty)
 
        :app
 

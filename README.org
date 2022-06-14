@@ -1,0 +1,24 @@
+* My private doom emacs config
+I am currently using Emacs 28 stable version
+** Get Started
+*** Install Emacs
+#+begin_src shell
+brew install emacs-plus@28 --with-no-titlebar --with-xwidgets --with-imagemagick  --with-native-comp --with-modern-sexy-v1-icon
+ln -s /usr/local/opt/emacs-plus@28/Emacs.app /Applications
+#+end_src
+
+*** Install Doom Emacs
+#+begin_src shell
+brew install grep ripgrep fd coreutils sqlite pcre pngpaste gnuplot cmake
+brew install --cask font-iosevka
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+#+end_src
+
+*** Install Doom config
+#+begin_src shell
+glt clone https://github.com/birdgg/doom-emacs-private.git ~/.doom.d
+#+end_src
+
+** Help
+ check variable description `SPC h v`

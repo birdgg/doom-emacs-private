@@ -10,7 +10,7 @@
    :nv "gd" #'lsp-ui-peek-find-definitions
    :nv "gD" #'lsp-ui-peek-find-references
    :localleader "r" #'lsp-rename)
-  (:after org
+ (:after org
    (:map org-mode-map
      :localleader
      :desc "org todo"     "t" #'org-todo
