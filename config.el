@@ -1,5 +1,7 @@
 ;;;  -*- lexical-binding: t; -*-
-(add-transient-hook! '+doom-dashboard-mode-hook (setq default-directory "~"))
+(setq user-full-name "xiejunjie"
+      user-mail-address "birdeggegg@gmail.com")
+(setq confirm-kill-emacs nil)
 
 ;; (use-package! company-tabnine
 ;;   :after company
@@ -20,7 +22,8 @@
 ;; (setq company-lsp-cache-candidates nil)
 
 ;; (add-hook 'js2-mode-hook #'+format|enable-on-save)
+(add-hook! 'elisp-mode #'+format|enable-on-save)
 
 (load! "+ui")
 ;; (load! "+bindings")
-;; (load! "+org")
+(load! "+org")

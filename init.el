@@ -8,15 +8,17 @@
        doom
        doom-dashboard
        hl-todo
-       hydra
+       ;; hydra
        modeline
        (treemacs +lsp)
+       ophints
        (popup +all +defaults)
        vi-tilde-fringe
        workspaces
-       window-select
+       ;; window-select
        (ligatures +extra +iosevka)
-       (emoji +ascii +github +unicode)
+       ;; (emoji +ascii +github +unicode)
+       zen
 
        :editor
        (evil +everywhere)
@@ -28,10 +30,12 @@
        :emacs
        (dired +ranger +icons)
        electric
-       vc
+       (ibuffer +icons)
+       undo
+       ;; vc
 
        :term
-       eshell
+       vterm
 
        :checkers
        (syntax +childframe)
@@ -40,13 +44,25 @@
        (lsp +peek)
        editorconfig
        magit
-       eval
+       (eval +overlay)
+       pdf
+       rgb
 
        :lang
        emacs-lisp
        (javascript +lsp)
        markdown
-       (org +present +dragndrop +journal +roam2 +brain +gnuplot +hugo +noter +pomodoro +pretty)
+       (org
+        +present
+        +dragndrop
+        +journal
+        +roam2
+        +brain
+        +gnuplot
+        +hugo
+        +noter
+        +pomodoro
+        +pretty)
 
        :app
 

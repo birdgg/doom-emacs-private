@@ -3,3 +3,5 @@
 
 ;; (package! company-tabnine)
 ;; (package! org-super-agenda)
+(package! pangu-spacing)
+(package! valign)
