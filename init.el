@@ -51,7 +51,7 @@
        :lang
        emacs-lisp
        (javascript +lsp)
-       markdown
+       (markdown +grip)
        (org
         +present
         +dragndrop
@@ -65,6 +65,7 @@
         +pretty)
 
        :app
+       calendar
 
        :config
        (default +bindings +smartparens))
