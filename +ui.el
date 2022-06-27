@@ -15,7 +15,8 @@
       )
 (setq doom-font-increment 1)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
+(set-frame-parameter (selected-frame) 'alpha '(90 90))
+(add-to-list 'default-frame-alist '(alpha 90 90))
 ;; instead of this func, use mix-pitch-mode and valign works great
 ;; (add-hook! 'doom-first-buffer-hook
 ;;   (defun +my/change-cjk-font ()
