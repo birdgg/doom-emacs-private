@@ -25,6 +25,7 @@
    org-superstar-special-todo-items t
    org-todo-keywords '((sequence
                         "TODO(t)"  ; A task that needs doing & is ready to do
+                        "DRAFT(f)" ; Post status for blog
                         "PROJ(p)"  ; A project, which usually contains other tasks
                         "LOOP(r)"  ; A recurring task, use for org habit
                         "START(s)"  ; A task that is in progress
@@ -34,6 +35,7 @@
                         "DONE(d)"  ; Task successfully completed
                         "KILL(k)")) ; Task was cancelled, aborted or is no longer applicable
    org-superstar-todo-bullet-alist '(("TODO" . ?)
+                                     ("DRAFT" . ?)
                                      ("DONE" . ?)
                                      ("PROJ" . ?)
                                      ("LOOP" . ?)
@@ -135,10 +137,24 @@
   :config
   (setq valign-fancy-bar t)
   (add-hook 'org-mode-hook #'valign-mode))
-
+
 (use-package! pangu-spacing
+  :hook (text-mode . pangu-spacing-mode)
   :config
-  (global-pangu-spacing-mode 1)
   ;; 在中英文符号之间, 真正地插入空格
-  (setq pangu-spacing-real-insert-separtor t))
+  (setq-hook! 'org-mode-hook pangu-spacing-real-insert-separtor t))
+
 (use-package! grab-mac-link)
+
+(defadvice! +chinese--org-html-paragraph-a (args)
+  "Join consecutive Chinese lines into a single long line without unwanted space
+when exporting org-mode to html."
+  :filter-args #'org-html-paragraph
+  (cl-destructuring-bind (paragraph contents info) args
+    (let* ((fix-regexp "[[:multibyte:]]")
+           (fixed-contents
+            (replace-regexp-in-string
+             (concat "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)")
+             "\\1\\2"
+             contents)))
+      (list paragraph fixed-contents info))))

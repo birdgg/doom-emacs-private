@@ -6,3 +6,7 @@
 (package! grab-mac-link)
 (package! pangu-spacing)
 (package! valign)
+(package! gitmoji
+  :recipe (:host github
+           :repo "Tiv0w/gitmoji"
+           ))

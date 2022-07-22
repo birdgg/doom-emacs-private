@@ -6,15 +6,17 @@
 
 ;; title bar
 (setq frame-resize-pixelwise t)
-;; (add-to-list 'default-frame-alist '(undecorated . t))
 ;; font
-(setq doom-font (font-spec :family "Iosevka SS09" :size 20)
+(setq doom-font (font-spec :family "JetBrains Mono" :size 20 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "LXGW WenKai" :size 24)
+      doom-unicode-font (font-spec :family "Iosevka SS09" :size 20)
       doom-big-font (font-spec :family "Iosevka" :size 28)
       fancy-splash-image (expand-file-name "banners/ll.png" doom-private-dir)
+      doom-font-increment 1
       )
-(setq doom-font-increment 1)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; set window transparent
 (set-frame-parameter (selected-frame) 'alpha '(90 90))
 (add-to-list 'default-frame-alist '(alpha 90 90))
 ;; instead of this func, use mix-pitch-mode and valign works great
@@ -31,6 +33,16 @@
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon t)
   )
+
+
+(plist-put! +ligatures-extra-symbols
+  ;; org
+  :name          "»"
+  :src_block     "»"
+  :src_block_end "«"
+  :quote         "“"
+  :quote_end     "”")
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
